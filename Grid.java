@@ -10,7 +10,7 @@ public class Grid {
     }
 
     public void drawGrid() {
-        // print out each column o the grid
+        // print out each row on the grid
         for (int i = grid.length - 1; i >= 0; i--) {
             System.out.print("\n" + i + " |");
             for (int j = 0; j < grid[i].length; j++) {
