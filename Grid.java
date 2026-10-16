@@ -44,6 +44,9 @@ public class Grid {
                 break;
             }
         }
+        // output the new grid and check if anyone win
+        drawGrid();
+        checkResult(player);
     }
 
     public boolean getError(int j) {

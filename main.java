@@ -10,8 +10,6 @@ public class main {
         grid.drawGrid();
         while (true) {
             grid.insert(sc, player);
-            grid.drawGrid();
-            grid.checkResult(player);
             // switch player
             if (player == 1) {
                 player = 2;
