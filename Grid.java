@@ -26,6 +26,11 @@ public class Grid {
         while (true) {
             // ask which column to insert disc
             System.out.println("Player " + player + " type a column (0-6) or 9 to quit current game: ");
+             // exit the game if the input is not a integer 
+             if (!sc.hasNextInt()) {
+                System.out.println("Wrong input type!!");
+                System.exit(0);
+            }
             int j = sc.nextInt();
             if (j == 9) {
                 // exit game
@@ -124,7 +129,7 @@ public class Grid {
                                 break;
                         }
                         // if k run through the whole loop,
-                        // there is four discs in diagonal line "/"
+                        // there is four discs in diagonal line "\"
                         if (k == 4) {
                             winHandler(player);
                         }
