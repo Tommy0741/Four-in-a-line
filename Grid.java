@@ -2,11 +2,14 @@
 import java.util.Scanner;
 
 public class Grid {
+
     private final int[][] grid;
+    private final int[] topRow;
 
     public Grid() {
         // initiate a 6 * 7 grid
         grid = new int[6][7];
+        topRow = new int[6];
     }
 
     public void drawGrid() {
@@ -26,8 +29,8 @@ public class Grid {
         while (true) {
             // ask which column to insert disc
             System.out.println("Player " + player + " type a column (0-6) or 9 to quit current game: ");
-             // exit the game if the input is not a integer 
-             if (!sc.hasNextInt()) {
+            // exit the game if the input is not a integer 
+            if (!sc.hasNextInt()) {
                 System.out.println("Wrong input type!!");
                 System.exit(0);
             }
@@ -40,11 +43,7 @@ public class Grid {
                 // getError will handle the error verification
             } else {
                 // find which row to place the disc
-                int i = 0;
-                while (grid[i][j] != 0) {
-                    i++;
-                }
-                grid[i][j] = player;
+                grid[topRow[j]++][j] = player;
                 // break the outside loop
                 break;
             }
@@ -52,6 +51,7 @@ public class Grid {
         // output the new grid and check if anyone win
         drawGrid();
         checkResult(player);
+        checkResult(player, i , j);
     }
 
     public boolean getError(int j) {
@@ -61,12 +61,17 @@ public class Grid {
             return true;
         }
         // check if the column is full
-        for (int i = 0; i < grid.length; i++) {
-            if (grid[i][j] == 0)
-                return false;
+        if (topRow[j] <= 5) {
+            return false;
         }
         System.out.println("Column " + j + " is full!");
         return true;
+    }
+
+    public void checkResult(int player, int i, int j) {
+        int k;
+        // check 
+        if (i )
     }
 
     public void checkResult(int player) {
@@ -78,10 +83,11 @@ public class Grid {
                     if (i < 3) {
                         k = 1;
                         while (k < 4) {
-                            if (grid[i + k][j] == player)
-                                k++;
-                            else
+                            if (grid[i + k][j] == player) {
+                                k++; 
+                            }else {
                                 break;
+                            }
                         }
                         // if k run through the whole loop,
                         // there is four discs in a vertical line
@@ -93,10 +99,11 @@ public class Grid {
                     if (j < 4) {
                         k = 1;
                         while (k < 4) {
-                            if (grid[i][j + k] == player)
-                                k++;
-                            else
+                            if (grid[i][j + k] == player) {
+                                k++; 
+                            }else {
                                 break;
+                            }
                         }
                         // if k run through the whole loop,
                         // there is four discs in a horizontal line
@@ -108,10 +115,11 @@ public class Grid {
                     if (i < 3 && j < 4) {
                         k = 1;
                         while (k < 4) {
-                            if (grid[i + k][j + k] == player)
-                                k++;
-                            else
+                            if (grid[i + k][j + k] == player) {
+                                k++; 
+                            }else {
                                 break;
+                            }
                         }
                         // if k run through the whole loop,
                         // there is four discs in diagonal line "/"
@@ -123,10 +131,11 @@ public class Grid {
                     if (i > 2 && j < 4) {
                         k = 1;
                         while (k < 4) {
-                            if (grid[i - k][j + k] == player)
-                                k++;
-                            else
+                            if (grid[i - k][j + k] == player) {
+                                k++; 
+                            }else {
                                 break;
+                            }
                         }
                         // if k run through the whole loop,
                         // there is four discs in diagonal line "\"
