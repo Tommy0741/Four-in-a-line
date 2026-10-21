@@ -1,4 +1,3 @@
-
 import java.util.Scanner;
 
 public class Grid {
@@ -29,7 +28,7 @@ public class Grid {
                 System.out.print(" " + grid[i][j]);
             }
         }
-        System.out.println("\n  +--");
+        System.out.print("\n  +");
         for (int i = 0; i < maxCol; i++) {
             System.out.print("--");
         }
@@ -37,6 +36,7 @@ public class Grid {
         for (int i = 0; i < maxCol; i++) {
             System.out.print(" " + i);
         }
+        System.out.println();
     }
 
     public void insert(Scanner sc, int player) {
